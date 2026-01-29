@@ -82,8 +82,8 @@ from dotenv import load_dotenv
 # ---------------- CONFIG ----------------
 SYMBOL = "NIFTY50"
 MINUTES = 390
-MU = 0.0
-SIGMA = 0.015
+MU = 0.00000222
+SIGMA = 0.00050040
 MAX_SIMULATIONS = 200
 BATCH_SIZE = 10
 # ----------------------------------------
