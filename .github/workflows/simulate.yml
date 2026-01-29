@@ -1,0 +1,28 @@
+name: Generate NIFTY Simulations
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch:       # manual trigger
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install numpy psycopg[binary] python-dotenv
+
+      - name: Run simulation generator
+        run: python generate_simulations.py
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
